@@ -1,3 +1,12 @@
-body {
-    background: lightsalmon;
+#bodyMain {
+    background: rgba(2, 3, 59, 0.863);
+    background-image: url(../images/champLeague3.jpg);
+    background-position: 0% 25%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: rgba(3, 2, 27, 0.849)
+}
+h1, h2, h4 {
+    color: rgb(245, 240, 240);
+    text-shadow: 2px 2px 5px rgb(26, 168, 250);
 }
