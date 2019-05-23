@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trivia Game</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
 </head>
 <!--header/body container-->
+
 <body id="bodyMain">
     <div class="container-fluid header text-center">
         <div class="row py-3">
@@ -21,7 +23,7 @@
             </div>
         </div>
     </div>
-<!--container for start button-->
+    <!--container for start button-->
     <div class="container body text-center">
         <div class="row">
             <div class="col-md-12 timer">
@@ -29,7 +31,7 @@
             </div>
         </div>
     </div>
-<!-- quiz container-->
+    <!-- quiz container-->
     <div id="quiz" hidden>
         <div class="container body text-center">
             <div class="row">
@@ -50,26 +52,27 @@
         <div class="container py-3">
             <div class="row text-center">
                 <div class="col-md-12 answers">
+                    <!-- <div id="questionBox"></div> -->
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="answersII" value="a">
+                        <input class="form-check-input" type="radio" name="answersII" value="0">
                         <label>
                             <h4><span class="ans1"></span></h4>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="answersII" value="b">
+                        <input class="form-check-input" type="radio" name="answersII" value="1">
                         <label>
                             <h4><span class="ans2"></span></h4>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="answersII" value="c">
+                        <input class="form-check-input" type="radio" name="answersII" value="2">
                         <label>
                             <h4><span class="ans3"></span></h4>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="answersII" value="d">
+                        <input class="form-check-input" type="radio" name="answersII" value="3">
                         <label>
                             <h4><span class="ans4"></span></h4>
                         </label>
@@ -80,23 +83,63 @@
             </div>
         </div>
     </div>
-        <div class= "container resultsTotal">
-            <div class="row text-center">
-                <div class="col-md-12">
-                    <h2><span id="correctAns"></span></h2>
-                    <br>
-                    <h2><span id="wrongAns"></span></h2>
+    <div class="container resultsTotal">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h2><span id="correctAns"></span></h2>
+                <br>
+                <h2><span id="wrongAns"></span></h2>
+            </div>
+        </div>
+        <div class="col-md-12 text-center" id="giphyClap" hidden>
+                <img class="minibox" src="https://media.giphy.com/media/etvJt6LZcUg47W4wNM/giphy.gif" alt="Soccer player clapping">
+        </div>
+    </div>
+    <!-------------------------------------->
+    <div id="myModalSuccess" class="modal" aria-hidden="true" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title">Correct!</h4>
+                    </div>
+                    <div class="modal-body">
+                            <h3>The answer was: <span id="ansCorrect"></span></h3>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success closeBtn" data-dismiss="modal">Next</button>
+                    </div>
                 </div>
             </div>
         </div>
+        <div id="myModalFailure" class="modal"aria-hidden="true" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content text-center">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Uh Oh!</h4>
+                        </div>
+                        <div class="modal-body">
+                                <h3><span id="ansWrong"></span></h3>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger closeBtn" data-dismiss="modal">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-------------------------------------------->
+       
     <!-- Jquery-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <!--my JS script-->
     <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
+
 </html>
